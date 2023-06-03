@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Card from './components/Card';
 import Banner from './components/Banner';
@@ -11,8 +11,10 @@ function App() {
   const count = useSelector(selectCount);
 
   useEffect(() => {
-    console.log(count)
-  }, [count])
+    console.log(count);
+  }, [count]);
+
+
 
   return (
     <>

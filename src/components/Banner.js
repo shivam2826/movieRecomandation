@@ -33,12 +33,12 @@ export default function Banner() {
                         clickable: true,
                     }}
                     navigation={true}
-                    modules={[Pagination, Navigation]}
+                    modules={[Autoplay, Pagination, Navigation]}
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     className="mySwiper"
                 >
                     <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top position-relative" alt="..." />
-                        <div className='position-absolute'>
+                        <div className='position-absolute' style={{ top: "25%" }}>
                             <div className='d-flex justify-content-start flex-column text-start' style={{ color: "white", width: "40%", marginLeft: "4rem" }}>
                                 <div>
                                     <h2> Slide 1</h2>
