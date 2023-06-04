@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,14 +11,37 @@ import './style.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { NavItem } from 'react-bootstrap';
 
 export default function Banner() {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
+    const [bannerList, setBannerList] = useState([])
+    let PosterbaseUrl = 'https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)'
     const onAutoplayTimeLeft = (s, time, progress) => {
         progressCircle.current.style.setProperty('--progress', 1 - progress);
         progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
+
+    useEffect(() => {
+        if (bannerList.length === 0) {
+            const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmOGZhNDBkOThlZTQ1Njk0ZmE5OWJiY2YyZmZhYjBhYiIsInN1YiI6IjY0Nzk3YWZkMTc0OTczMDBmYjM5ZWVjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NPamfZdzzpNYLnPEWf0DZZdvuHtugI5_KO6gZ5jJtz8'
+                }
+            };
+            fetch(url, options)
+                .then(res => res.json())
+                .then(json => setBannerList(json.results))
+                .catch(err => console.error('error:' + err));
+        }
+    }, [])
+
+
+    console.log(39, bannerList)
     return (
         <>
             <div style={{ minHeight: "350px", height: "350px" }}>
@@ -37,38 +60,37 @@ export default function Banner() {
                     onAutoplayTimeLeft={onAutoplayTimeLeft}
                     className="mySwiper"
                 >
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top position-relative" alt="..." />
-                        <div className='position-absolute' style={{ top: "25%" }}>
-                            <div className='d-flex justify-content-start flex-column text-start' style={{ color: "white", width: "40%", marginLeft: "4rem" }}>
-                                <div>
-                                    <h2> Slide 1</h2>
-                                </div>
-                                <div>
-                                    Subtitle
-                                </div>
-                                <div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                        dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                        laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                        Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                        Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                        ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                        tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    {
+                        bannerList.slice(0, 5).map((NavItem) => {
+                            return (
+                                <SwiperSlide key={NavItem.id}>
+                                    <img src={`${PosterbaseUrl + NavItem.poster_path}`}
+                                        className="card-img-top position-relative"
+                                        alt="..."
+                                    />
+                                    <div className='position-absolute' style={{ top: "25%" }}>
+                                        <div className='d-flex justify-content-start flex-column text-start' style={{ color: "white", width: "100%", marginLeft: "4rem" }}>
+                                            <div>
+                                                <h2>{NavItem.title}</h2>
 
-                    </SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
-                    <SwiperSlide>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UPCGgo9z-sokgSi9PGtt7tB-rZ140w-xlRrtikND8Q&usqp=CAU&ec=48665699" className="card-img-top" alt="..." /></SwiperSlide>
+                                            </div>
+                                            <div className='d-flex'>
+                                                {NavItem.original_title}
+                                            </div>
+                                            <div className='d-flex'>
+                                                Realese on:    &nbsp;{NavItem.release_date}
+                                            </div>
+                                            <div style={{ maxWidth: "35%" }}>
+                                                <p>
+                                                    {NavItem.overview}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
                     <div className="autoplay-progress" slot="container-end">
                         <svg viewBox="0 0 48 48" ref={progressCircle}>
                             <circle cx="24" cy="24" r="20"></circle>

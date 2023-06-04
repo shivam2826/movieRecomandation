@@ -31,7 +31,7 @@ function MyVerticallyCenteredModal(props) {
                             </a>
                             <div className="hero"
                                 style={{
-                                    backgroundImage: `url(${PosterbaseUrl + details.poster_path})`,
+                                    backgroundImage: `url(${baseUrl + details.backdrop_path})`,
                                     backgroundSize: 'cover',
                                     backgroundRepeat: 'no-repeat',
                                     backgroundPosition: 'center',
@@ -145,7 +145,7 @@ function MyVerticallyCenteredModal(props) {
                                         {details.overview}...{" "}
                                         <a href="#">read more</a>
                                     </p>
-                                    <div className="avatars">
+                                    {/* <div className="avatars">
                                         <a href="#" data-tooltip="Person 1" data-placement="top">
                                             <img
                                                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar1.png"
@@ -164,7 +164,7 @@ function MyVerticallyCenteredModal(props) {
                                                 alt="avatar3"
                                             />
                                         </a>
-                                    </div>{" "}
+                                    </div>{" "} */}
                                     {/* end avatars */}
                                 </div>{" "}
                                 {/* end column2 */}

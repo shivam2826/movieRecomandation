@@ -445,7 +445,7 @@ a:hover {
 }
 
 .avatars {
-  margin-top: 23px;
+  margin-top: 10px;
 }
 
 .avatars img {
@@ -546,4 +546,37 @@ a[data-tooltip][data-placement="top"]::after {
   bottom: 50px;
   left: 20px;
   margin-bottom: 4px;
+}
+.tool{
+  pointer-events: none;
+
+}
+
+
+
+
+/* watch list button */
+.watch-btn{
+  background: #2898F3;
+  color: white;
+  text-decoration: none;
+  padding: 10px 40px;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+  transition: all .2s ease-in;
+  margin-top: 1.2rem;
+}
+
+.watch-btn:hover{
+  background: #1B7ADD;
+}
+.watch-btn .badge1{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 13px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
 }
