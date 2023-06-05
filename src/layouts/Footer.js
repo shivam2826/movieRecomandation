@@ -1,5 +1,5 @@
 import React from 'react'
-import "./footer.css"
+import "../assets/footer.css"
 
 const Footer = () => {
     return (
@@ -14,26 +14,6 @@ const Footer = () => {
                                         <b>Refer your friends</b>
                                     </h5>
                                 </div>
-                                {/* <div className="col-sm-auto col-12 my-sm-0 mt-3 text-left">
-                                    <label htmlFor="validationCustom01">First name</label>{" "}
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="validationCustom01"
-                                        placeholder="First name"
-                                        defaultValue="Mark"
-                                    />
-                                </div>
-                                <div className="col-sm-auto col-12 my-sm-0 mt-4 ">
-                                    <label htmlFor="validationCustom01 ">Contact Number</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="validationCustom01"
-                                        placeholder="Contact Number"
-                                        defaultValue="88888 88888"
-                                    />{" "}
-                                </div> */}
                                 <div className="col-auto align-self-end mt-sm-0 mt-4">
                                     <button className="btn btn-block btn-success ml-2 mt-md-0 mt-3">
                                         Refer Now

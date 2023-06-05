@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Card from './components/Card';
-import Banner from './components/Banner';
-import Nav from './components/Nav';
-import { Counter } from './features/counter/Counter';
-import { useSelector } from 'react-redux';
-import { selectCount } from './features/counter/counterSlice';
-import Footer from './layouts/Footer';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './layouts/Layout';
+import DashBoard from './view/DashBoard';
 
-function App() {
-  const count = useSelector(selectCount);
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
-
-
-
+export default function App() {
   return (
-    <>
-      <Nav />
-      <Banner />
-      <Card />
-      <Footer />
-      {/* <Counter /> */}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<DashBoard />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App;

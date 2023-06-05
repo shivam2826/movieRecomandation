@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 
-function Pagination1({ setCurrentPage, currentPage }) {
+function Pagination1({ setCurrentPage, currentPage, totalPage }) {
     const pageNumbers = [];
-    let totalPages = 20;
     // const [currentPage, setCurrentPage] = useState(1)
     const onPageChange = (number) => {
         setCurrentPage(number)
-        console.log(number)
+        // console.log(number)
     }
     // Calculate the range of page numbers to display
     const maxPagesToShow = 5;
     const startPage = Math.max(currentPage - Math.floor(maxPagesToShow / 2), 1);
-    const endPage = Math.min(startPage + maxPagesToShow - 1, totalPages);
+    const endPage = Math.min(startPage + maxPagesToShow - 1, totalPage);
 
     for (let i = startPage; i <= endPage; i++) {
         pageNumbers.push(i);
@@ -40,7 +39,7 @@ function Pagination1({ setCurrentPage, currentPage }) {
                     </Pagination.Item>
                 ))}
                 <Pagination.Ellipsis />
-                <Pagination.Next disabled={currentPage === totalPages}
+                <Pagination.Next disabled={currentPage === totalPage}
                     onClick={() => onPageChange(currentPage + 1)}
                 />
             </Pagination>
